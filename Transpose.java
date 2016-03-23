@@ -17,8 +17,9 @@ class Transpose{
         System.out.println("The matrix is");
         for(i=0;i<m;i++){
             for(j=0;j<n;j++){
-                System.out.println(a[i][j]);
+                System.out.print(a[i][j]);
             }
+            System.out.println();
         }
         int[][]b=new int[n][m];
         for(i=0;i<n;i++){
@@ -30,8 +31,10 @@ class Transpose{
         System.out.println("The transpose matrix is");
         for(i=0;i<n;i++){
             for(j=0;j<m;j++){
-                System.out.println(b[i][j]);
-            }}
+                System.out.print(b[i][j]);
+            }
+            System.out.println();
+        }
         
     }
 }
