@@ -1,27 +1,25 @@
-//17. Euler Method
-
-#include<stdio.h>
+/* Euler's method */
+#include <stdio.h>
+#include <math.h>
 
 float f(float x,float y)
 {
-	return (x+y);
+return x-y;
 }
-int main()
+
+int main(){
+float x0,y0,h,x,y;
+int n,i;
+printf("Enter the value of x0,y0,h,x\n");
+scanf("%f%f%f%f",&x0,&y0,&h,&x);
+n=(x-x0)/h;
+x=x0;
+y=y0;
+for(i=0;i<=n;i++)
 {
-	 float x0,y0,h,xn,ans,x,y;
-	 
-	 printf("\nEnter x0,y0,h,xn: ");
-	 scanf("%f %f %f %f",&x0,&y0,&h,&xn);
-	 x=x0;
-	 y=y0;
-	 
-	 while(x<=xn)
-	 {
-	 	ans  = h*f(x,y);
-	 	y = y+ans;
-	 	x = x+h;
-	 	printf("%f   \t  %f \n",x,y);
-	 }
-	 
-	return 0;
+y=y+(h*f(x,y));
+x=x+h;
+printf("y %f \t x %f\n",y,x);
+}
+printf("Value of y is %f",y);
 }
