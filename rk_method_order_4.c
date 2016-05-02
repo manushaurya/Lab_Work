@@ -1,33 +1,29 @@
-
-//20. R-K method of order 4
-
-#include<stdio.h>
-
-float f(float x,float y);
-int main()
-{
-    float x0,y0,m1,m2,m3,m4,m,y,x,h,xn;
-    printf("Enter x0,y0,xn,h:");
-    scanf("%f %f %f %f",&x0,&y0,&xn,&h);
-    x=x0;
-    y=y0;
-    printf("\n\nX\t\tY\n");
-    while(x<xn)
-    {
-        m1=h*f(x,y);
-        m2=h*f((x+(h*0.5)),(y+(m1 * 0.5)));
-        m3=h*f((x+(h*0.5)),(y+(m2 * 0.5)));
-        m4=h*f((x+(h*0.5)),(y+(m1 * 0.5)));
-
-        m=(m1+2*m2 + 2*m3 + m4)/6;
-        y=y+m;
-        x=x+h;
-        printf("%f\t%f\n",x,y);
-    }
-return 0;
-    
+#include <stdio.h>
+#include <math.h>
+float f(float x, float y){
+return (pow(x,2)+pow(y,2));
 }
-float f(float x,float y)
+
+int main(){
+float x,y,x0,y0,h,k1,k2,k3,k4,k;
+int n,i;
+printf("Enter the value of x0,y0,h,x\n");
+scanf("%f%f%f%f",&x0,&y0,&h,&x);
+n=(x-x0)/h;
+x=x0;
+y=y0;
+for(i=0;i<=n;i++)
 {
-return x + (y*y);
+k1=h*f(x,y);
+k2=h*f(x+(h*0.5),y+(0.5*k1));
+k3=h*f(x+(h*0.5),y+(0.5*k2));
+k4=h*f(x+h,y+k3);
+
+k=(k1+2*k2+2*k3+k4)/6;
+x=x+h;
+y=y+k;
+printf("x %f\ty %f\n",x,y);
+}
+printf("Value of y is %f",y);
+return 0;
 }
