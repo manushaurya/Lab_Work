@@ -1,44 +1,28 @@
-//10. Trapezoidal Rule 
+/*Trapezoidal Rule */
+#include <stdio.h>
+#include <math.h>
 
-#include<stdio.h>
-#include<math.h>
+float f(float x)
+{
+	return(exp(x)+2*x);
+}
 
-    float f (float x)
-    {
-    return (1/(1+(x*x)));
-    }
-
-    int main()
-      {
-        float n,a,b;
-        printf("enter value of n:\n");
-       
-        scanf("%f",&n);
-       
-        printf("enter value of a:\n");
-       
-        scanf("%f",&a);
-        printf("enter value of b:\n");
-       
-        scanf("%f",&b);
-       
-       
-        float h = (b-a)/n ;
-       
-        float i = 0;
-        float t0 = f(a);
-        float t1 = f(b);
-        float ans = 0.0;
-        ans  = t0 + t1 ;
-       for(i = a + h ; i< b ; i = i+h)
-        {
-            ans  = ans + 2*f(i);
-        }
-       
-        ans  = (ans * h)/2 ;
-       
-        printf("ans  =  %f",ans);
-       
-        return 0;
-       
-        }
+int main()
+{
+	int n,i;
+	float a,b,h,s,I;
+	printf("Enter a,b,n respectively:\n");
+	scanf("%f%f%d",&a,&b,&n);
+	h=(b-a)/n;
+	s=f(a)+f(b);
+	printf("\nf(a)= %f\tf(b)= %f\n",f(a),f(b));
+	printf("\ni\txi\t\tf(xi)\n");
+	for(i=1;i<n;i++)
+	{
+		s=s+2*f(a+i*h);
+		I=s*h/2;
+		printf("\n%d\t%f\t%f\n",i,(a+i*h),f(a+i*h));
+	}
+	printf("\nFinal Sum=%f",I);
+	return 0;
+}
