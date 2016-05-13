@@ -42,4 +42,5 @@ int main()
 	}
 	I=((3*h)/10)*sum;
 	printf("Value of I=%f",I);
+	return 0;
 }
