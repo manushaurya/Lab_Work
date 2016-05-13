@@ -1,44 +1,45 @@
-//13. Weddle Rule 
+/*Weddles rule */
+#include <stdio.h>
+#include <math.h>
 
-#include<stdio.h>
-#include<math.h>
+float f(float x)
+{
+	return (1/(1+pow(x,2)));
+}
 
-    float f (float x)
-    {
-    return (1/(1+(x*x)));
-    }
+int main()
+{
+	float a,b,h,I,sum;
+	int n,i;
+	printf("Enter the values of a,b,n respectively:\n");
+	scanf("%f%f%d",&a,&b,&n);
+	h=(b-a)/n;
+	sum=f(a)+f(b);
+	printf("i\txi\t\tf(xi)\n");
+	for(i=1;i<=n-1;i++)
+	{
+		if(i%2==0)
+		{
+			sum=sum+f(a+i*h);
+			printf("%d\t%f\t%f\n",i,(a+i*h),f(a+i*h));
+		}
+		else if(i%3==0)
+		{
+			sum=sum+6*f(a+i*h);
+			printf("%d\t%f\t%f\n",i,(a+i*h),f(a+i*h));
+		}
+		else if(i%6==0)
+		{
+			sum=sum+2*f(a+i*h);
+			printf("%d\t%f\t%f\n",i,(a+i*h),f(a+i*h));
+		}
+		else
+		{
+			sum=sum+5*f(a+i*h);
+		    printf("%d\t%f\t%f\n",i,(a+i*h),f(a+i*h));
+		}
 
-    int main()
-      {
-        float n,a,b;
-        printf("enter value of n:\n");
-       
-        scanf("%f",&n);
-       
-        printf("enter value of a:\n");
-       
-        scanf("%f",&a);
-        printf("enter value of b:\n");
-       
-        scanf("%f",&b);
-     
-        float h = (b-a)/n ;
-       
-        float i = 0;
-        float ans = 0;
-        float s1=0,s2 = 0,s3=0;
-        int k=1;
-        
-        for(i = 0; i<=(n-6);i = i++)
-            {
-           
- ans = ans + f(a+h*i)+5 * f(a+h*(i+1))+ f(a+h*(i+2))+ 6 * f(a+h*(i+3)) + f(a+h*(i+4))+5* f(a+h*(i+5)) +  f(a+h*(i+6)) ;
-                   
-            }
-       
-        ans  = (ans * 3*h) / 10 ;  
-       
-        printf("ans  =  %f",ans);
-       
-        return 0;
+	}
+	I=((3*h)/10)*sum;
+	printf("Value of I=%f",I);
 }
