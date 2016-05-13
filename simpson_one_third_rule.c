@@ -1,50 +1,36 @@
-//11.  Simpson's one third
+/*Simpsons 1/3rd rule */
+#include <stdio.h>
+#include <math.h>
 
-#include<stdio.h>
-#include<math.h>
-
-    float f (float x)
-    {
-    return (1/(1+(x)));
-    }
-
-    int main()
-      {
-        float n,a,b;
-        printf("enter value of n:\n");
-       
-        scanf("%f",&n);
-       
-        printf("enter value of a:\n");
-       
-        scanf("%f",&a);
-        printf("enter value of b:\n");
-       
-        scanf("%f",&b);
-       
-       
-        float h = (b-a)/n ;
-       
-        float i = 0;
-        float t0 = f(a);
-        float t1 = f(b);
-        float ans = 0.0,s1=0,s2 = 0;
-        ans  = t0 + t1 ;
-       
-       
-        for(i = a + h ; i<= b-h ; i = i+h+h)
-            {
-                s1  = s1 + f(i);
-            }
-        for(i = a + h+h ; i<= b-h-h ; i = i+h+h)
-        {
-            s2 = s2 + f(i);
-        }
-       
-        ans  = ((ans + 4*s1 + 2*s2) * h)/3 ;  
-       
-        printf("ans  =  %f",ans);
-       
-        return 0;
-       
-        }
+float f(float x)
+{
+	return(exp(x)+2*x);
+}
+int main()
+{
+	float a,b,h,I;
+	int n,i;
+	float sum,sum1,sum2=0.0,sum3=0.0;
+	printf("Enter the values of a,b,n respectively\n");
+	scanf("%f%f%d",&a,&b,&n);
+	h=(b-a)/n;
+	sum1=f(a)+f(b);
+	printf("f(a)=%f\tf(b)=%f\n",f(a),f(b));
+	printf("i\txi\t\tf(xi)\n");
+	for(i=1;i<=n-1;i=i+2)
+	{
+		sum2=sum2+f(a+i*h);
+		printf("%d\t%f\t%f\n",i,(a+i*h),f(a+i*h));
+	}
+	for(i=2;i<=n-2;i=i+2)
+	{
+		sum3=sum3+f(a+i*h);
+		printf("%d\t%f\t%f\n",i,(a+i*h),f(a+i*h));
+	}
+	printf("Value of Sum2=%f\n",sum2);
+	printf("Value of Sum3=%f\n",sum3);
+	sum=sum1+(4*sum2)+(2*sum3);
+	I=(h/3)*sum;
+	printf("Value of I=%f",I);
+	return 0;
+}
