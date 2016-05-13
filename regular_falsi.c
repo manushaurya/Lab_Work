@@ -1,3 +1,4 @@
+/*Regula-Falsi Method*/
 #include <stdio.h>
 #include <math.h>
 
